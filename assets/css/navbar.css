@@ -1,0 +1,138 @@
+.navbar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: .75% 3% .5%;
+  background-color: #fff;
+}
+
+.navbar .brand {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar .brand img {
+  height: 50px;
+}
+
+.navbar .toggler {
+  display: none;
+}
+
+.navbar .collapsible {
+  display: -ms-grid;
+  display: grid;
+}
+
+.navbar .collapsible .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-left: 0;
+  list-style: none;
+}
+
+.navbar .collapsible .menu .link {
+  text-decoration: none;
+  margin-left: .75rem;
+  color: #212529;
+}
+
+/* Large devices (desktops, 1200px and up) */
+/* Medium devices (tablets, up to 992px) */
+/* Small devices (landscape phones, up to 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 5% 1rem;
+  }
+  .navbar .brand {
+    padding-top: .2rem;
+  }
+  .navbar .brand img {
+    height: 30px;
+  }
+  .navbar .toggler {
+    display: -ms-grid;
+    display: grid;
+    margin-left: auto;
+  }
+  .navbar .toggler .menu-toggler {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }
+  .navbar .toggler .menu-toggler .hamburger .btn-line {
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    width: 1.75rem;
+    height: 0.125rem;
+    margin-bottom: 5px;
+    background-color: #212529;
+  }
+  .navbar .toggler .menu-toggler .hamburger .btn-line:last-of-type {
+    margin-bottom: 0;
+  }
+  .navbar .toggler .menu-toggler.active .btn-line {
+    background-color: #0099dc;
+  }
+  .navbar .toggler .menu-toggler.active .btn-line:nth-child(1) {
+    -webkit-transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(5px, 5px);
+  }
+  .navbar .toggler .menu-toggler.active .btn-line:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar .toggler .menu-toggler.active .btn-line:nth-child(3) {
+    -webkit-transform: rotate(-45deg) translate(5px, -5px);
+            transform: rotate(-45deg) translate(5px, -5px);
+  }
+  .navbar .toggler .menu-toggler:focus {
+    outline: none;
+  }
+  .navbar .collapsible {
+    display: none;
+  }
+  .navbar .collapsible.active {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .navbar .collapsible.active .menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding-left: 0;
+  }
+  .navbar .collapsible.active .menu li {
+    width: 100%;
+    padding: .2rem 0;
+  }
+  .navbar .collapsible.active .menu li .link {
+    margin-left: 0;
+  }
+}
+/*# sourceMappingURL=navbar.css.map */
