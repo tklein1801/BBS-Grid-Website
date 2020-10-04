@@ -1,198 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DulliAG News</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DulliAG News</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/navbar.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
-</head>
-
-<body>
-  <div class="wrapper">
-    <!-- 
-            Alert
-         -->
-    <div style="background-color: #ed1236">
-      <p style="padding: 15px" class="text-white text-center">
-        Jetzt neu! Das HKK-Dosier
-        <a href="https://www.boehme-zeitung.de/dossier-hkk">hier</a>
-      </p>
-    </div>
-
-    <!-- 
-            Navbar
-         -->
-    <nav class="navbar">
-      <div class="brand">
-        <img src="./assets/img/logo.png" alt="Boehmezeitung" />
+  <body>
+    <div class="wrapper">
+      <!-- Alert -->
+      <div class="alert danger">
+        <p class="text center">
+          Jetzt neu! Das HKK-Dosier
+          <a href="https://www.boehme-zeitung.de/dossier-hkk">hier</a>
+        </p>
       </div>
-      <div class="toggler">
-        <button class="menu-toggler">
-          <div class="hamburger">
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
-            <div class="btn-line"></div>
-          </div>
-        </button>
-      </div>
-      <div class="collapsible">
-        <ul class="menu">
-          <li><a href="#" class="link">Leserservice</a></li>
-          <li><a href="#" class="link">Geschäftskunden</a></li>
-          <li><a href="#" class="link">Abonnement</a></li>
-          <li><a href="#" class="link">E-Paper</a></li>
-        </ul>
-      </div>
-    </nav>
 
-    <!-- 
-            Header
-         -->
-    <header style="display: none;">
-      <h1>
-        Geschichten stehen überall, <br />die Wahrheit steht in der<br />
-        Zeitung.
-      </h1>
-    </header>
-
-    <!-- 
-            News
-         -->
-    <section id="news">
-      <hr class="divider" title="Aktuelles">
-      <div class="grid-con col-4">
-        <div class="grid-item main-item" onclick="js:location.href='https://dulliag.de';">
-          <div class="header">
-            <!-- TODO Create an js carousel -->
-            <img src="https://news-dasmagazin.de/wp-content/uploads/2020/09/portrait-4599559_1280-1200x800.jpg"
-              alt="Thubmnail" />
-          </div>
-          <div class="body">
-            <p class="category">Lifestyle</p>
-            <div class="heading">Döner ab sofort für 4€</div>
-          </div>
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="brand">
+          <img src="./assets/img/logo.png" alt="Boehmezeitung" />
         </div>
-
-        <div class="grid-item sub-item" onclick="js:location.href='https://dulliag.de';">
-          <h4 class="heading text-center">Döner 4€</h4>
-          <small class="date"></small>
-        </div>
-      </div>
-    </section>
-
-    <section class="news">
-      <div class="grid-con col-3">
-        <div class="grid-item"
-          style="background-color:red; grid-column-start: 1; grid-column-end: 3; grid-row-start: 1; grid-row-end: 2;">
-          <hr class="divider" title="Wirtschaft & Politik">
-        </div>
-
-        <div class="grid-item"
-          style="background-color: yellow; grid-column-start: 1; grid-column-end: 3; grid-row-start: 2; grid-row-end: 3;">
-          <hr class="divider" title="Fashion">
-        </div>
-
-        <div class="grid-item"
-          style="background-color: orange; grid-column-start: 1; grid-column-end: 3; grid-row-start: 3; grid-row-end: 4;">
-          <hr class="divider" title="Sonstiges">
-        </div>
-
-        <div class="grid-item keyword-container"
-          style="grid-column-start: 3; grid-column-end: 4; grid-row-start: 1; grid-row-end: 4;">
-          <hr class="divider" title="Schlägwörter">
-          <a href="#" class="keyword">Döner</a>
-          <a href="#" class="keyword">a</a>
-          <a href="#" class="keyword">b</a>
-          <a href="#" class="keyword">c</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 
-      Footer
-     -->
-    <footer>
-      <div class="grid-con col-4" style="width: 80%; margin: 0 auto">
-        <div class="grid-item">
-          <h2>Allgemeines</h2>
-          <nav style="margin: 0">
-            <ul style="list-style: none; padding-left: 0">
-              <li>
-                <a href="https://www.boehme-zeitung.de/impressum">Impressum</a>
-              </li>
-              <li>
-                <a href="https://www.boehme-zeitung.de/datenschutzhinweis">Datenschutzhinweis</a>
-              </li>
-              <li><a href="https://www.boehme-zeitung.de/agb">AGB</a></li>
-            </ul>
-          </nav>
-        </div>
-
-        <div class="grid-item" style="grid-column-start: 2; grid-column-end: 4">
-          <h2 class="text-center">Nachrichten</h2>
-
-          <div class="grid-con col-3">
-            <div class="grid-item">
-              <p class="text-center">
-                <a href="https://www.boehme-zeitung.de/nachrichten-soltau">Soltau</a>
-              </p>
+        <div class="toggler">
+          <button class="menu-toggler">
+            <div class="hamburger">
+              <div class="btn-line"></div>
+              <div class="btn-line"></div>
+              <div class="btn-line"></div>
             </div>
-            <div class="grid-item">
-              <p class="text-center">
-                <a href="https://www.boehme-zeitung.de/nachrichten-wietzendorf">Wietzendorf</a>
-              </p>
-            </div>
-            <div class="grid-item">
-              <p class="text-center">
-                <a href="https://www.boehme-zeitung.de/nachrichten-munster">Munster</a>
-              </p>
-            </div>
-            <div class="grid-item">
-              <p class="text-center">
-                <a href="https://www.boehme-zeitung.de/nachrichten-bispingen">Bispingen</a>
-              </p>
-            </div>
-            <div class="grid-item">
-              <p class="text-center">
-                <a href="https://www.boehme-zeitung.de/nachrichten-schneverdingen">Schneverdingen</a>
-              </p>
-            </div>
-            <div class="grid-item">
-              <p class="text-center">
-                <a href="https://www.boehme-zeitung.de/nachrichten-neuenkirchen">Neuenkirchen</a>
-              </p>
+          </button>
+        </div>
+        <div class="collapsible">
+          <ul class="menu">
+            <li><a href="#" class="link">Leserservice</a></li>
+            <li><a href="#" class="link">Geschäftskunden</a></li>
+            <li><a href="#" class="link">Abonnement</a></li>
+            <li><a href="#" class="link">E-Paper</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Top News -->
+      <section id="top-news">
+        <hr class="divider" title="Aktuelles" />
+        <div>
+          <!-- Content will be generated by news.js :D -->
+        </div>
+      </section>
+
+      <!-- News -->
+      <section id="news">
+        <div>
+          <div class="news">
+            <hr class="divider" title="Technik" />
+            <div>
+              <!-- Content will be generated by news.js :D -->
             </div>
           </div>
+          <div class="keywords">
+            <hr class="divider" title="Themen" />
+            <div></div>
+          </div>
         </div>
+      </section>
 
-        <div class="grid-item">
-          <h2>Kontakt</h2>
-          <nav style="margin: 0">
-            <ul style="list-style: none; padding-left: 0">
-              <li>
-                <p>Tel.: <a href="tel:tel:+495191808400">+495191808400</a></p>
-              </li>
-              <li>
-                <p>
-                  E-Mail:
-                  <a href="mailto:service@boehme-zeitung.de">service@boehme-zeitung.de</a>
-                </p>
-              </li>
-              <li></li>
-              <li>
-                <p>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                  <a href="#"><i class="fas fa-link"></i></a>
-                </p>
-              </li>
       <!-- Footer -->
       <footer>
         <div>
@@ -213,17 +96,10 @@
         <div class="credits">
           <p class="text center">© 2020 DAG-News</p>
         </div>
-  </div>
+      </footer>
+    </div>
 
-  <script>
-    const navbar = document.querySelector(".navbar");
-    const menuToggler = navbar.querySelector(".menu-toggler");
-    const collapsible = navbar.querySelector(".collapsible");
-    menuToggler.addEventListener("click", function () {
-      menuToggler.classList.toggle("active");
-      collapsible.classList.toggle("active");
-    })
-  </script>
-</body>
-
+    <script src="./assets/js/navbar.js"></script>
+    <script src="./assets/js/news.js"></script>
+  </body>
 </html>
