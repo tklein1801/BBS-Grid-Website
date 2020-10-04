@@ -3,11 +3,10 @@
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: .75% 3% .5%;
+  padding: 0.75% 3% 0.5%;
   background-color: #fff;
 }
 
@@ -47,8 +46,9 @@
 
 .navbar .collapsible .menu .link {
   text-decoration: none;
-  margin-left: .75rem;
+  margin-left: 1.5rem;
   color: #212529;
+  border-bottom: none;
 }
 
 /* Large devices (desktops, 1200px and up) */
@@ -59,7 +59,7 @@
     padding: 1rem 5% 1rem;
   }
   .navbar .brand {
-    padding-top: .2rem;
+    padding-top: 0.2rem;
   }
   .navbar .brand img {
     height: 30px;
@@ -129,7 +129,7 @@
   }
   .navbar .collapsible.active .menu li {
     width: 100%;
-    padding: .2rem 0;
+    padding: 0.2rem 0;
   }
   .navbar .collapsible.active .menu li .link {
     margin-left: 0;
