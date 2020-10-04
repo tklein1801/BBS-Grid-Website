@@ -69,6 +69,67 @@ header {
   background-attachment: fixed;
 }
 header h1 {
+html footer,
+body footer {
+  background-color: #212529;
+}
+
+html footer > div:first-of-type,
+body footer > div:first-of-type {
+  display: -ms-grid;
+  display: grid;
+  padding: 2rem 15%;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
+html footer .links,
+body footer .links {
+  padding: 1.5rem 1rem;
+}
+
+html footer .links:nth-child(2),
+body footer .links:nth-child(2) {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+html footer .links .title,
+body footer .links .title {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+html footer .links ul,
+body footer .links ul {
+  padding-left: 0;
+}
+
+html footer .links ul li,
+body footer .links ul li {
+  list-style: none;
+}
+
+html footer .links ul li a,
+body footer .links ul li a {
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+html footer .links ul li a:hover,
+body footer .links ul li a:hover {
+  color: #0099dc;
+}
+
+html footer .credits,
+body footer .credits {
+  background-color: #0099dc;
+}
+
+html footer .credits .text,
+body footer .credits .text {
+  padding: 1.5rem 0;
   color: white;
 }
 
@@ -161,4 +222,29 @@ section#news .sub-item .body .date {
 /* FOOTER */
 footer {
   background-color: #333;
+  html footer > div:first-of-type,
+  body footer > div:first-of-type {
+    padding: 2rem 5% !important;
+  }
+  html footer .links:nth-child(1),
+  body footer .links:nth-child(1) {
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  html footer .links:nth-child(2),
+  body footer .links:nth-child(2) {
+    -ms-grid-row: 2;
+        grid-row-start: 2;
+    grid-row-end: 3;
+    -ms-grid-column: 1 !important;
+        grid-column-start: 1 !important;
+    grid-column-end: 5 !important;
+  }
+  html footer .links:nth-child(3),
+  body footer .links:nth-child(3) {
+    -ms-grid-column: 3;
+        grid-column-start: 3;
+    grid-column-end: 5;
+  }
 }
