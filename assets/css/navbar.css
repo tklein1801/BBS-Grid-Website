@@ -17,7 +17,7 @@
 }
 
 .navbar .brand img {
-  height: 50px;
+  height: 60px;
 }
 
 .navbar .toggler {
@@ -62,7 +62,7 @@
     padding-top: 0.2rem;
   }
   .navbar .brand img {
-    height: 30px;
+    height: 40px;
   }
   .navbar .toggler {
     display: -ms-grid;
