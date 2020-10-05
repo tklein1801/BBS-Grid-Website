@@ -17,6 +17,25 @@ body {
     margin: 0;
   }
 
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $primary;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: $primary;
+  }
+  ::selection {
+    background: $primary;
+    color: #fff;
+  }
+  ::-moz-selection {
+    background: $primary;
+    color: #fff;
+  }
+
   .wrapper {
     width: inherit;
     height: inherit;
@@ -334,7 +353,33 @@ body {
         .news {
           grid-column-start: 1 !important;
           grid-column-end: 4 !important;
-          height: 50px;
+          grid-row-start: 2;
+
+          > div {
+            grid-template-columns: 1fr;
+
+            grid-template-rows: repeat(4, 30vh);
+            gap: 1rem;
+            grid-template-areas:
+              "news0"
+              "news1"
+              "news2"
+              "news3" !important;
+            div {
+              &:nth-child(1) {
+                grid-area: news0;
+              }
+              &:nth-child(2) {
+                grid-area: news1;
+              }
+              &:nth-child(3) {
+                grid-area: news2;
+              }
+              &:nth-child(4) {
+                grid-area: news3;
+              }
+            }
+          }
         }
         .keywords {
           grid-row-start: 1;

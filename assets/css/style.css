@@ -15,6 +15,40 @@ body * {
   margin: 0;
 }
 
+html ::-webkit-scrollbar,
+body ::-webkit-scrollbar {
+  width: 8px;
+  height: 0px;
+}
+
+html ::-webkit-scrollbar-thumb,
+body ::-webkit-scrollbar-thumb {
+  background: #0099dc;
+}
+
+html ::-webkit-scrollbar-thumb:hover,
+body ::-webkit-scrollbar-thumb:hover {
+  background: #0099dc;
+}
+
+html ::-moz-selection,
+body ::-moz-selection {
+  background: #0099dc;
+  color: #fff;
+}
+
+html ::selection,
+body ::selection {
+  background: #0099dc;
+  color: #fff;
+}
+
+html ::-moz-selection,
+body ::-moz-selection {
+  background: #0099dc;
+  color: #fff;
+}
+
 html .wrapper,
 body .wrapper {
   width: inherit;
@@ -69,7 +103,7 @@ body #top-news > div {
   -ms-grid-rows: 35vh 35vh 30vh;
       grid-template-rows: 35vh 35vh 30vh;
   gap: 1rem 1rem;
-      grid-template-areas: "news0 news0 news0 news0" "news0 news0 news0 news0" "news1 news2 news3 news4";
+      grid-template-areas: "news0 news0 news0 news0" "news0 news0 news0 news0" "news1 news2 news3 news4";
 }
 
 html #top-news > div div,
@@ -434,7 +468,7 @@ body a:hover {
     -ms-grid-rows: (30vh)[5];
         grid-template-rows: repeat(5, 30vh);
     gap: 1rem;
-        grid-template-areas: "news0" "news1" "news2" "news3" "news4";
+        grid-template-areas: "news0" "news1" "news2" "news3" "news4";
   }
   html #top-news > div div:nth-child(1),
   body #top-news > div div:nth-child(1) {
@@ -483,7 +517,41 @@ body a:hover {
     -ms-grid-column: 1 !important;
         grid-column-start: 1 !important;
     grid-column-end: 4 !important;
-    height: 50px;
+    -ms-grid-row: 2;
+        grid-row-start: 2;
+  }
+  html #news > div:first-of-type .news > div,
+  body #news > div:first-of-type .news > div {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: (30vh)[4];
+        grid-template-rows: repeat(4, 30vh);
+    gap: 1rem;
+        grid-template-areas: "news0" "news1" "news2" "news3" !important;
+  }
+  html #news > div:first-of-type .news > div div:nth-child(1),
+  body #news > div:first-of-type .news > div div:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: news0;
+  }
+  html #news > div:first-of-type .news > div div:nth-child(2),
+  body #news > div:first-of-type .news > div div:nth-child(2) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: news1;
+  }
+  html #news > div:first-of-type .news > div div:nth-child(3),
+  body #news > div:first-of-type .news > div div:nth-child(3) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    grid-area: news2;
+  }
+  html #news > div:first-of-type .news > div div:nth-child(4),
+  body #news > div:first-of-type .news > div div:nth-child(4) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 1;
+    grid-area: news3;
   }
   html #news > div:first-of-type .keywords,
   body #news > div:first-of-type .keywords {
