@@ -1,54 +1,187 @@
+if (location.host != "localhost") {
+  alert("Hoste die Webseite lokal für das ideale Erlebnis");
+}
+
 class News {
   constructor() {
-    this.apiKey = "ca7dc05f54074f18877366cf72c88385"; // I don't realy care aboutn this api-key
+    this.apiKey = "ca7dc05f54074f18877366cf72c88385";
     this.country = "de";
-    this.category = ["Business", "Entertainment", "Health", "Science", "Sports", "Technology"];
-    this.selectedCatgory = {
-      index: 0,
-      topic: this.category[0],
-    };
+    this.topics = [
+      {
+        german: "Wirtschaft",
+        english: "Business",
+      },
+      {
+        german: "Unterhaltung",
+        english: "Entertainment",
+      },
+      {
+        german: "Gesundheit",
+        english: "Health",
+      },
+      {
+        german: "Wissenschaft",
+        english: "Science",
+      },
+      {
+        german: "Sport",
+        english: "Sports",
+      },
+      {
+        german: "Technik",
+        english: "Technology",
+      },
+    ];
+    this.selectedTopic = this.topics[0];
   }
 
-  /**
-   * @param {string} country de = Germany
-   */
   getTopNews(country) {
     return new Promise((res, rej) => {
-      var url = `http://newsapi.org/v2/top-headlines?country=${country}&apiKey=${this.apiKey}`;
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => res(data))
-        .catch((err) => rej(err));
+      fetch(`http://newsapi.org/v2/top-headlines?country=${country}&apiKey=${this.apiKey}`)
+        .then((response) => {
+          if (response.status == 200 /*successfull request*/) {
+            res(response.json());
+          } else {
+            rej(`Status: ${response.status}`);
+          }
+        })
+        .catch((error) => {
+          rej(error);
+        });
     });
   }
 
-  /**
-   * @param {string} category Choose between business, entertainment, health, science, sports or technology
-   */
-  getNews(country, category) {
+  getNews(category) {
     return new Promise((res, rej) => {
-      var url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${this.apiKey}`;
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => res(data))
-        .catch((err) => rej(err));
+      fetch(
+        `http://newsapi.org/v2/top-headlines?country=${this.country}&category=${category}&apiKey=${this.apiKey}`
+      )
+        .then((response) => {
+          if (response.status == 200 /*successfull request*/) {
+            res(response.json());
+          } else {
+            rej(`Status: ${response.status}`);
+          }
+        })
+        .catch((error) => {
+          rej(error);
+        });
     });
   }
 
-  /**
-   * Update the current selected topic
-   * @param {string} newCategory Choose between business, entertainment, health, science, sports or technology
-   */
-  updateTopic(newCategory) {
-    this.news.selectedCatgory.topic = newCategory;
+  displayTopics(outputPath) {
+    let topics = this.topics;
+    topics.map((topic) => {
+      document.querySelector(
+        outputPath
+      ).innerHTML += `<a id="cat-${topic.english}" href="#" data-english="${topic.english}" data-german="${topic.german}">${topic.german}</a>`;
+    });
+    document.querySelector("#news .news hr").setAttribute("title", this.selectedTopic.german);
+    document.querySelector(`#cat-${this.selectedTopic.english}`).classList.add("active");
   }
 
-  displayTopic(country, category) {
-    let news = this.getNews(country, category);
+  displayNews(output, headline, redirectURL, backgroundImageURL) {
+    document.querySelector(output).innerHTML += `
+      <div style="background-image: url(${backgroundImageURL});">
+        <div class="more">
+          <h2 class="title center">${headline}</h2>
+          <p class="text center"><a href="${redirectURL}">Hier mehr</a></p>
+        </div>
+      </div>`;
+  }
 
-    news.then((data) => {
+  displayPlaceholder(output, amount) {
+    for (let i = 0; i < amount; i++) {
+      this.displayNews(
+        output,
+        "Platzhalter",
+        "https:///dulliag.de/Galerie/",
+        "https://dulliag.de/Tool/uploads/gallery/all-my-friends-are-dead.png"
+      );
+    }
+  }
+}
+
+let news = new News();
+news
+  .getTopNews(news.country)
+  .then((data) => {
+    if (typeof data == "object" && data != null) {
+      let top5 = [];
+      // TODO Should we only display 3 articles in the second row for more space?
+      data.articles.map((article) => {
+        // key < 5 && done != true ? top5.push(article) : (done = true);
+        top5.length < 5 && article.urlToImage != null ? top5.push(article) : false;
+      });
+
+      top5.map((article) => {
+        let headline = article.title;
+        let trimmedHeadline = null;
+        headline.includes(":") == true
+          ? (trimmedHeadline = headline.split(":")[0])
+          : (trimmedHeadline = headline.split("?")[0]);
+
+        news.displayNews("#top-news > div", trimmedHeadline, article.url, article.urlToImage);
+      });
+    } else {
+      news.displayPlaceholder("#top-news > div", 5);
+    }
+  })
+  .catch((err) => {
+    console.error("Error: ", err);
+    news.displayPlaceholder("#top-news > div", 5);
+  });
+news.displayTopics("#news .keywords > div");
+let topicBtns = document.querySelectorAll("#news .keywords > div a");
+topicBtns.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    let curTopic = news.selectedTopic;
+    let newTopic = {
+      german: this.getAttribute("data-german"),
+      english: this.getAttribute("data-english"),
+    };
+    news.selectedTopic = newTopic;
+    document.querySelector(`#cat-${curTopic.english}`).classList.remove("active");
+    this.classList.add("active");
+    document.querySelector("#news .news hr").setAttribute("title", newTopic.german);
+    document.querySelector("#news .news > div").innerHTML = "";
+    news
+      .getNews(newTopic.english)
+      .then((data) => {
+        if (typeof data == "object" && data != null) {
+          let top4 = [];
+          data.articles.map((article) => {
+            // key < 5 && done != true ? top5.push(article) : (done = true);
+            top4.length < 4 && article.urlToImage != null ? top4.push(article) : false;
+          });
+
+          top4.map((article) => {
+            let headline = article.title;
+            let trimmedHeadline = null;
+            headline.includes(":") == true
+              ? (trimmedHeadline = headline.split(":")[0])
+              : (trimmedHeadline = headline.split("?")[0]);
+
+            news.displayNews("#news .news> div", trimmedHeadline, article.url, article.urlToImage);
+          });
+        } else {
+          news.displayPlaceholder("#news .news > div", 4);
+        }
+      })
+      .catch((err) => {
+        console.error("Error: ", err);
+        news.displayPlaceholder("#news .news > div", 4);
+      });
+  });
+});
+news
+  .getNews("business")
+  .then((data) => {
+    if (typeof data == "object" && data != null) {
       let top4 = [];
       data.articles.map((article) => {
+        // key < 5 && done != true ? top5.push(article) : (done = true);
         top4.length < 4 && article.urlToImage != null ? top4.push(article) : false;
       });
 
@@ -59,58 +192,13 @@ class News {
           ? (trimmedHeadline = headline.split(":")[0])
           : (trimmedHeadline = headline.split("?")[0]);
 
-        document.querySelector("#news .news > div").innerHTML += `
-          <div style="background-image: url(${article.urlToImage});">
-            <div class="more">
-              <h2 class="title center">${trimmedHeadline}</h2>
-              <p class="text center"><a href="${article.url}">Hier mehr</a></p>
-            </div>
-          </div>`;
+        news.displayNews("#news .news> div", trimmedHeadline, article.url, article.urlToImage);
       });
-    });
-  }
-}
-
-let news = new News();
-let topNews = news.getTopNews("de");
-let topNewsOutput = document.querySelector(".wrapper #top-news div");
-topNews.then((data) => {
-  let top5 = [],
-    done = false;
-  // TODO Should we only get 4 articles? There would be more space for them...
-  data.articles.map((article) => {
-    // key < 5 && done != true ? top5.push(article) : (done = true);
-    top5.length < 5 && article.urlToImage != null ? top5.push(article) : false;
+    } else {
+      news.displayPlaceholder("#news .news > div", 4);
+    }
+  })
+  .catch((err) => {
+    console.error("Error: ", err);
+    news.displayPlaceholder("#news .news > div", 4);
   });
-
-  top5.map((article) => {
-    let headline = article.title;
-    let trimmedHeadline = null;
-    headline.includes(":") == true
-      ? (trimmedHeadline = headline.split(":")[0])
-      : (trimmedHeadline = headline.split("?")[0]);
-
-    document.querySelector("#top-news > div").innerHTML += `
-      <div style="background-image: url(${article.urlToImage});">
-        <div class="more">
-          <h2 class="title center">${trimmedHeadline}</h2>
-          <p class="text center"><a href="${article.url}">Hier mehr</a></p>
-        </div>
-      </div>`;
-  });
-});
-
-let categoryOutput = document.querySelector("#news .keywords div");
-// TODO Translate the categories
-let newsCategories = ["Business", "Entertainment", "Health", "Science", "Sports", "Technology"];
-let curCategory = {
-  index: 0,
-  category: newsCategories[0],
-};
-let catNews = news.getNews("de", curCategory.category);
-newsCategories.forEach((category, index) => {
-  categoryOutput.innerHTML += `<a id="cat-${index}" href="#">${category}</a>`;
-});
-categoryOutput.querySelector(`a#cat-${curCategory.index}`).classList.add("active");
-
-news.displayTopic(news.country, news.selectedCatgory.topic);
