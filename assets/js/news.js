@@ -14,10 +14,10 @@ class News {
         name: "Unterhaltung",
         topic: "Entertainment",
       },
-      {
-        name: "Politik",
-        topic: "Politics",
-      },
+      // {
+      //   name: "Politik",
+      //   topic: "Politics",
+      // },
       {
         name: "Wissenschaft",
         topic: "ScienceAndTechnology",
@@ -41,7 +41,7 @@ class News {
 
   getTopNews(amount) {
     return new Promise((res, rej) => {
-      fetch(`https://bing-news-search1.p.rapidapi.com/news?originalImg=true`, {
+      fetch(`https://bing-news-search1.p.rapidapi.com/news?category=World&originalImg=true`, {
         headers: {
           "x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
           "x-rapidapi-key": this.apiKey,
@@ -139,10 +139,10 @@ class News {
   }
 }
 
-let news = new News();
+const news = new News();
 
 // Get the top headlines
-let topNews = {
+const topNews = {
   amount: 5,
   output: "#top-news > div",
 };
@@ -166,7 +166,7 @@ news
   });
 
 // Display category sorted news
-let categoryNews = {
+const categoryNews = {
   selected: news.selectedTopic,
   amount: 4,
   output: "#news .news> div",
@@ -192,7 +192,7 @@ news
 
 // Display all avaiable topics
 news.displayTopics("#news .keywords > div");
-let topicBtns = document.querySelectorAll("#news .keywords > div a");
+const topicBtns = document.querySelectorAll("#news .keywords > div a");
 topicBtns.forEach((btn) => {
   btn.addEventListener("click", function (e) {
     e.preventDefault();
@@ -220,6 +220,7 @@ topicBtns.forEach((btn) => {
         });
       })
       .catch((err) => {
+        console.error(err)
         // Bcause we ran into an error we wanna display some placeholders instead of the actual news
         // We also gonna reset the topics
         topicBtns.forEach((topicBtn) => topicBtn.classList.remove("active"));
