@@ -5,11 +5,11 @@
     <meta name="viewport" content="width-device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="id=edge" />
     <meta name="theme-color" content="#0099dc" />
-    <meta property="og:image" content="https://files.dulliag.de/web/images/logo.jpg" />
+    <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/5b91625a9f877014cb95348f/1536501503513-SY9OEADMD90OE55AJ57A/ke17ZwdGBToddI8pDm48kHxZW8G9yQIB8WDax7xpbxxZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7Wt5K3jmsiBpJAJjNxwpFT48K2g_wJ5Tvrry30-swdfDUdj1yWJm5f7xpqDxWrxJCQ/favicon.ico?format=100w" />
     <meta name="description" content="Aktuelle News rund um die Uhr" />
     <meta property="og:type" content="website" />
-    <title>DAG • News</title>
-    <link rel="icon" href="https://files.dulliag.de/web/images/logo.jpg" />
+    <title>BöhmZeitung</title>
+    <link rel="icon" href="https://images.squarespace-cdn.com/content/v1/5b91625a9f877014cb95348f/1536501503513-SY9OEADMD90OE55AJ57A/ke17ZwdGBToddI8pDm48kHxZW8G9yQIB8WDax7xpbxxZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7Wt5K3jmsiBpJAJjNxwpFT48K2g_wJ5Tvrry30-swdfDUdj1yWJm5f7xpqDxWrxJCQ/favicon.ico?format=100w" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/navbar.css" />
     <link
@@ -29,15 +29,15 @@
       <!-- Alert -->
       <div class="alert danger">
         <p class="text center">
-          Den dümmsten Mann der Welt finden Sie
-          <a href="https://www.tagesschau.de/ausland/trump-corona-krankenhaus-101.html">hier</a>
+          20% Rabatt auf ihr digitales Abonnement gibt es
+          <a href="#">hier</a>!
         </p>
       </div>
 
       <!-- Navbar -->
       <nav class="navbar">
         <div class="brand">
-          <img src="https://files.dulliag.de/web/images/logo.jpg" alt="DAG" />
+          <img src="assets/img/logo.png" alt="BöhmeZeitung Logo" />
         </div>
         <div class="toggler">
           <button class="menu-toggler">
@@ -113,12 +113,24 @@
           </div>
         </div>
         <div class="credits">
-          <p class="text center">© 2020 DAG-News</p>
+          <p class="text center">© 2020 BöhmeZeitung</p>
         </div>
       </footer>
     </div>
 
     <script src="./assets/js/navbar.js"></script>
     <script src="./assets/js/news.js"></script>
+    <script>
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar"),
+          scrollOffset = window.scrollY,
+          alertOffset = document.querySelector(".alert").offsetHeight;
+        
+        scrollOffset >= alertOffset 
+          ? navbar.classList.add("scrolled")
+          : navbar.classList.remove("scrolled");
+
+      });
+    </script>
   </body>
 </html>

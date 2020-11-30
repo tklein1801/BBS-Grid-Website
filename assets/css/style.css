@@ -4,6 +4,7 @@ body {
   width: 100%;
   height: 100%;
   font-family: "Quicksand", sans-serif;
+  scroll-behavior: smooth!important;
   /* 
    * Divider
    * by https://codepen.io/scottzirkel/pen/yNxNME
@@ -52,7 +53,7 @@ body ::-moz-selection {
 html .wrapper,
 body .wrapper {
   width: inherit;
-  height: inherit;
+  min-height: 100%;
 }
 
 html .alert,
