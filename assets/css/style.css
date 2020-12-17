@@ -59,7 +59,6 @@ body .wrapper {
 html .alert,
 body .alert {
   width: 100%;
-  padding: 1rem 0;
   background-color: #fcfcfa;
 }
 
@@ -71,6 +70,7 @@ body .alert.danger {
 
 html .alert.danger p,
 body .alert.danger p {
+  padding: 1rem 5%;
   color: white;
 }
 

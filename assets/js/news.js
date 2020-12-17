@@ -123,12 +123,12 @@ class News {
 
   renderNews(outputPath, headline, redirectTo, backgroundImage) {
     document.querySelector(outputPath).innerHTML += `
-      <div style="background-image: url(${backgroundImage});">
-        <div class="more">
-          <h2 class="title center">${headline}</h2>
-          <p class="text center"><a href="${redirectTo}">Hier mehr</a></p>
-        </div>
-      </div>`;
+<div style="background-image: url(${backgroundImage});">
+  <div class="more">
+    <h2 class="title center">${headline}</h2>
+    <p class="text center"><a href="${redirectTo}">Hier mehr</a></p>
+  </div>
+</div>`;
   }
 
   renderPlaceholder(outputPath, amount) {
@@ -220,7 +220,7 @@ topicBtns.forEach((btn) => {
         });
       })
       .catch((err) => {
-        console.error(err)
+        console.error(err);
         // Bcause we ran into an error we wanna display some placeholders instead of the actual news
         // We also gonna reset the topics
         topicBtns.forEach((topicBtn) => topicBtn.classList.remove("active"));
